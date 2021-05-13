@@ -26,11 +26,25 @@ sigma = zeros(1, size(X, 2));
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
 
+%size(X_norm)
+%fprintf('size(X) is %0.f \n',size(X))
+%fprintf('sum(X) is %0.f\n', sum(X))
+%fprintf('sum(X)/size(X,1) is %0.f\n', sum(X)/size(X,1))
+%temp = sum(X)/size(X,1)
+%sumup = sum(X)/47
 
 
 
+mu = mean(X);
+sigma = std(X);
+X_norm = (X-mu)./sigma; % I tried (X-mu)/ sigma first and did not work
 
+%sum(X)
 
+%size(mu)
+%size(sigma)
+%size(X-mu)
+%size(X_norm)
 
 
 

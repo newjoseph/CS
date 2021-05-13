@@ -17,9 +17,17 @@ for iter = 1:num_iters
     %       of the cost function (computeCost) and gradient here.
     %
 
-    
+    temp = zeros(size(X)(2),1); % store the temp theta value here
+    	
+    h= X*theta;
+    err= h-y;
 
 
+    for itr = 1:size(X)(2) % iterate #of features times
+    	temp(itr) = theta(itr)- alpha/m*sum( err .* X(:,itr));
+    end 
+
+    theta = temp; % update theta
 
 
 
