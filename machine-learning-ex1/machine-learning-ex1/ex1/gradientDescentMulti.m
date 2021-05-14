@@ -7,6 +7,12 @@ function [theta, J_history] = gradientDescentMulti(X, y, theta, alpha, num_iters
 m = length(y); % number of training examples
 J_history = zeros(num_iters, 1);
 
+
+
+% for debuggig purpose
+%num_iters = 3; 
+
+
 for iter = 1:num_iters
 
     % ====================== YOUR CODE HERE ======================
@@ -18,15 +24,17 @@ for iter = 1:num_iters
     %
 
 
-
-
-
-
-
-
-
-
-
+	temp= zeros(size(X,2),1);
+	h = X*theta;
+	err = h-y;
+	
+	%size(temp), size(h), size(err),size(theta)
+	
+	for itr = 1:size(X,2) % iterate the number of feature times
+		temp(itr) = theta(itr) - alpha/m *sum(err .* X(:,itr));
+		end
+	theta = temp;
+		
     % ============================================================
 
     % Save the cost J in every iteration    
