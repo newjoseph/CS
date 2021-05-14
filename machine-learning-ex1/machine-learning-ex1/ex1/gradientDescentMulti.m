@@ -9,10 +9,6 @@ J_history = zeros(num_iters, 1);
 
 
 
-% for debuggig purpose
-%num_iters = 3; 
-
-
 for iter = 1:num_iters
 
     % ====================== YOUR CODE HERE ======================

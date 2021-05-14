@@ -107,6 +107,39 @@ fprintf('\n');
 price = 0; % You should change this
 
 
+% Let's get it
+
+% change the variables
+alpha = 0.01;
+num_iters = 50;
+[theta1, J_history1] = gradientDescentMulti(X, y, theta, alpha, num_iters);
+alpha = 0.03;
+[theta2, J_history2] = gradientDescentMulti(X, y, theta, alpha, num_iters);
+alpha = 0.1;
+[theta3, J_history3] = gradientDescentMulti(X, y, theta, alpha, num_iters);
+alpha = 0.3;
+[theta4, J_history4] = gradientDescentMulti(X, y, theta, alpha, num_iters);
+alpha = 1;
+[theta5, J_history5] = gradientDescentMulti(X, y, theta, alpha, num_iters);
+%alpha = 1.5; %convergence
+%[theta6, J_history6] = gradientDescentMulti(X, y, theta, alpha, num_iters);
+
+% Plot the convergence graph
+figure;
+plot(1:numel(J_history1), J_history1, '-b', 'LineWidth', 2);
+xlabel('Number of iterations');
+ylabel('Cost J');
+
+hold on;
+plot(1:numel(J_history2), J_history2, '-r', 'LineWidth', 2);
+plot(1:numel(J_history3), J_history3, '-k', 'LineWidth', 2);
+plot(1:numel(J_history4), J_history4, '-g', 'LineWidth', 2);
+plot(1:numel(J_history5), J_history5, '-m', 'LineWidth', 2);
+%plot(1:numel(J_history6), J_history6, '-y', 'LineWidth', 2);
+
+price = [1 1650 3]*theta5;
+
+
 % ============================================================
 
 fprintf(['Predicted price of a 1650 sq-ft, 3 br house ' ...
