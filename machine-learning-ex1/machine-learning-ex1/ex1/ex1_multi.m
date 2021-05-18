@@ -104,6 +104,7 @@ fprintf('\n');
 % ====================== YOUR CODE HERE ======================
 % Recall that the first column of X is all-ones. Thus, it does
 % not need to be normalized.
+
 price = 0; % You should change this
 
 
@@ -112,17 +113,22 @@ price = 0; % You should change this
 % change the variables
 alpha = 0.01;
 num_iters = 50;
-[theta1, J_history1] = gradientDescentMulti(X, y, theta, alpha, num_iters);
+temp_theta = zeros(3,1);
+[theta1, J_history1] = gradientDescentMulti(X, y, temp_theta, alpha, num_iters);
+
 alpha = 0.03;
-[theta2, J_history2] = gradientDescentMulti(X, y, theta, alpha, num_iters);
+[theta2, J_history2] = gradientDescentMulti(X, y, temp_theta, alpha, num_iters);
+
 alpha = 0.1;
-[theta3, J_history3] = gradientDescentMulti(X, y, theta, alpha, num_iters);
+[theta3, J_history3] = gradientDescentMulti(X, y, temp_theta, alpha, num_iters);
+
 alpha = 0.3;
-[theta4, J_history4] = gradientDescentMulti(X, y, theta, alpha, num_iters);
+[theta4, J_history4] = gradientDescentMulti(X, y, temp_theta, alpha, num_iters);
+
 alpha = 1;
-[theta5, J_history5] = gradientDescentMulti(X, y, theta, alpha, num_iters);
+[theta5, J_history5] = gradientDescentMulti(X, y, temp_theta, alpha, num_iters);
 %alpha = 1.5; %convergence
-%[theta6, J_history6] = gradientDescentMulti(X, y, theta, alpha, num_iters);
+%[theta6, J_history6] = gradientDescentMulti(X, y, temp_theta, alpha, num_iters);
 
 % Plot the convergence graph
 figure;
@@ -137,7 +143,22 @@ plot(1:numel(J_history4), J_history4, '-g', 'LineWidth', 2);
 plot(1:numel(J_history5), J_history5, '-m', 'LineWidth', 2);
 %plot(1:numel(J_history6), J_history6, '-y', 'LineWidth', 2);
 
-price = [1 1650 3]*theta5;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%mu = [1 mu];
+%sigma = [0 sigma];
+%size(mu)
+%size(X)
+%size(sigma)
+%size(theta4)
+%fprintf(' %f \n', theta4);
+%price = [1 1650 3]*theta4;
+%fprintf(' %f \n', price);
+
+mycase = [1650 3];
+case_norm = (([1650 3] - mu)./sigma);
+
+case_norm = [1 , case_norm];
+price = case_norm*theta4;
 
 
 % ============================================================
@@ -184,6 +205,7 @@ fprintf('\n');
 % ====================== YOUR CODE HERE ======================
 price = 0; % You should change this
 
+price = [1 1650 3]*theta;
 
 % ============================================================
 

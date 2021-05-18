@@ -20,7 +20,7 @@ for iter = 1:num_iters
     %
 
 
-	temp= zeros(size(X,2),1);
+	temp = zeros(size(X,2),1);
 	h = X*theta;
 	err = h-y;
 	
@@ -30,6 +30,7 @@ for iter = 1:num_iters
 		temp(itr) = theta(itr) - alpha/m *sum(err .* X(:,itr));
 		end
 	theta = temp;
+
 		
     % ============================================================
 
