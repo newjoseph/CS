@@ -20,16 +20,17 @@ for iter = 1:num_iters
     %
 
 
-	%temp = zeros(size(X,2),1);
-	%h = X*theta;
-	%err = h-y;
+	temp = zeros(size(X,2),1);
+	h = X*theta;
+	err = h-y;
 	
-	%for itr = 1:size(X,2) % iterate the number of feature times
-	%	temp(itr) = theta(itr) - alpha/m *sum(err .* X(:,itr));
-	%	end
-	%theta = temp;
-  
-    theta = theta - alpha / m * ( X' * ( X * theta - y ) ) ;
+	%size(temp), size(h), size(err),size(theta)
+	
+	for itr = 1:size(X,2) % iterate the number of feature times
+		temp(itr) = theta(itr) - alpha/m *sum(err .* X(:,itr));
+		end
+	theta = temp;
+
 		
     % ============================================================
 
