@@ -112,7 +112,7 @@ price = 0; % You should change this
 
 % change the variables
 alpha = 0.01;
-num_iters = 50;
+num_iters = 100;
 temp_theta = zeros(3,1);
 [theta1, J_history1] = gradientDescentMulti(X, y, temp_theta, alpha, num_iters);
 
