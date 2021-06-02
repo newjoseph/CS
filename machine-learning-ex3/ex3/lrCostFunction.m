@@ -35,10 +35,13 @@ grad = zeros(size(theta));
 %           temp(1) = 0;   % because we don't add anything for j = 0  
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
+h = sigmoid(X * theta);
+J = mean(-y.*log(h)-(1-y).*log(1-h)) + lambda/(2*m)*sum(theta(2:end).^2); % if it is not regularized, do not need this more // lambda/(2*m)*sum(theta(2:end).^2)
 
+temp_theta = theta;
+temp_theta(1) = 0; % theta(1) is the first element in vector theta, it should be 0
 
-
-
+grad = (1/m)*X'*(h-y) + lambda/m*temp_theta;
 
 
 
