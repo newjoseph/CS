@@ -21,12 +21,32 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+% add 1s 
+%X = [ones(m,1) X];
+%Theta1 = [ones(1), Theta1];
+%Theta2 = [ones(1), Theta2];
+%z1 = X*Theta1;
+%size(z1)
+%a2 = sigmoid(z1);
+%z2 = 
 
+%=======================%
 
+X = [ones(m,1), X]; % add 1s (m+1)xn
+a1 = X'; % nx(m+1)
+z1 = Theta1*a1;
+%size(z1)
+g1 = sigmoid(z1); 
+a2 = [ones(1,m) ; g1];
+%size(a2) 
+z2 = Theta2*a2; %10xm
+%size(z2)
+g2 = sigmoid(z2);
+h = g2';
 
-
-
-
+[w, wi] = max(h, [], 2); %max col 
+%size(wi)
+p = wi;
 
 
 % =========================================================================
