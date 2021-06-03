@@ -30,10 +30,16 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
+%method #1
 
+%temp = sigmoid(X*all_theta'); % m by 10 matrix
+%[w, wi] = max(temp, [], 2); % maximun along rows
+%p = wi;
 
-
-
+%method #2
+del = sigmoid(all_theta*X'); %10 by m matrix
+[w, wi] = max(del, [], 1); % maximun along cols
+p = wi';
 
 
 % =========================================================================
