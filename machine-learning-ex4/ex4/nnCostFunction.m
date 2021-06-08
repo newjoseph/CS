@@ -101,7 +101,7 @@ J = 1/m*sum(sum((-reshaped_Y.*log(h))-(1-reshaped_Y).*log(1-h)));
 
 %regularization partial
 
-
+J = J + lambda/(2*m)*( sum(sum(Theta1(:,2:end).^2)) + sum(sum(Theta2(:,2:end).^2)) ); % two sigma - two sum
 
 
 
