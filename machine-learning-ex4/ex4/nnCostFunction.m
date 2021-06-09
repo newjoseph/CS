@@ -122,9 +122,7 @@ J = J + lambda/(2*m)*( sum(sum(Theta1(:,2:end).^2)) + sum(sum(Theta2(:,2:end).^2
 %               first time.
 
 
-%%%%%%%%%%%%%%%%%%
 
-yVec = zeros(num_labels,1);
 for t = 1:m
   
   %step1
@@ -137,13 +135,14 @@ for t = 1:m
   a3 = sigmoid(z3);
   
   %step2
+  yVec = zeros(num_labels,1);
+  yVec(y(t)) = 1;
+  del3 = a3 - yVec;
+  % WHY THIS DID NOT WORK? 
+  % Because yVec always needs to be initialized in for-loop 
   
-  %yVec(y(t),1) = 1;
-  %del3 = a3 - yVec;
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% WHY THIS DOES NOT WORK?
-  
-  del3 = a3 - reshaped_Y(t,:)';
-  
+  %del3 = a3 - reshaped_Y(t,:)'; This also works
+
   %step3
   del2 = (Theta2' * del3) .* [1; sigmoidGradient(z2)];
   del2 = del2(2:end);
@@ -154,6 +153,9 @@ for t = 1:m
   
 end
 
+
+
+%unregularized yet
 Theta1_grad = (1/m) * (Theta1_grad);
 Theta2_grad = (1/m) * (Theta2_grad); 
 
