@@ -123,8 +123,8 @@ J = J + lambda/(2*m)*( sum(sum(Theta1(:,2:end).^2)) + sum(sum(Theta2(:,2:end).^2
 
 
 %%%%%%%%%%%%%%%%%%
-%yVec = zeros(num_labels,1);
 
+yVec = zeros(num_labels,1);
 for t = 1:m
   
   %step1
@@ -137,8 +137,11 @@ for t = 1:m
   a3 = sigmoid(z3);
   
   %step2
+  
   %yVec(y(t),1) = 1;
   %del3 = a3 - yVec;
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% WHY THIS DOES NOT WORK?
+  
   del3 = a3 - reshaped_Y(t,:)';
   
   %step3
@@ -186,8 +189,8 @@ Theta2_grad = (1/m) * (Theta2_grad);
 %               and Theta2_grad from Part 2.
 %
 
-%Theta1_grad = (1/m) * (Theta1_grad + lambda * [zeros(hidden_layer_size,1), Theta1(:,2:end)] );
-%Theta2_grad = (1/m) * (Theta2_grad + lambda * [zeros(num_labels,1), Theta2(:,2:end)]); 
+Theta1_grad += (1/m) * (lambda * [zeros(hidden_layer_size,1), Theta1(:,2:end)] );
+Theta2_grad += (1/m) * (lambda * [zeros(num_labels,1), Theta2(:,2:end)]); 
 
 
 
