@@ -51,14 +51,28 @@ error_val   = zeros(m, 1);
 %       end
 %
 
+
 % ---------------------- Sample Solution ----------------------
 
+for i = 1:m
+ 
+ %subsetX = X(1:i, :);
+ %subsety = y(1:i);
+ theta = trainLinearReg(X(1:i, :), y(1:i), lambda); %lambda should not be 0 to regularize
+ error_train(i) = linearRegCostFunction(X(1:i, :), y(1:i), theta, 0);  %lambda should be 0 not to regularize
+ error_val(i) = linearRegCostFunction(Xval, yval, theta, 0);  %lambda should be 0 not to regularize
+ %size(theta);
+end
+
+%theta =  trainLinearReg(X, y, 0);
+%thetaval = trainLinearReg(Xval, yval, 0);   
 
 
+%error_val = linearRegCostFunction(Xval, yval, thetaval, 0);
+%error_val
 
 
-
-
+  
 % -------------------------------------------------------------
 
 % =========================================================================
