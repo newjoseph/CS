@@ -23,10 +23,25 @@ sigma = 0.3;
 %        mean(double(predictions ~= yval))
 %
 
+min = 10^5;
+list = [0.01, 0.03, 0.1, 0.3, 1, 3, 10, 30];
 
+for i = 1:length(list)
+  for j = 1:length(list)
+    c = list(i);
+    sig = list(j);
+    %%function [model] = svmTrain(X, Y, C, kernelFunction, tol, max_passes)
+    model= svmTrain(X, y, c, @(x1, x2) gaussianKernel(x1, x2, sig)); % how this part works?
+    predictions = svmPredict(model, Xval);
+    temp = mean(predictions ~= yval); %compute error
+    if(min > temp)
+      min = temp;
+      C = c;
+      sigma = sig;
+    endif
+  endfor
 
-
-
+ 
 
 
 % =========================================================================
