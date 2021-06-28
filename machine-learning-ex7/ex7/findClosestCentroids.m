@@ -22,10 +22,17 @@ idx = zeros(size(X,1), 1);
 %
 
 
-
-
-
-
+for i = 1: size(X,1)
+  
+  dist_array = zeros(1, K); 
+  
+  for j = 1:K
+    dist_array(1,j) = sum((X(i,:) - centroids(j,:)).^2);
+  endfor
+  
+  [d, index] = min(dist_array);
+  
+  idx(i,1) = index;
 
 % =============================================================
 
