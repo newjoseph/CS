@@ -20,7 +20,8 @@ S = zeros(n);
 %       number of examples).
 %
 
-
+Sigma = 1/m * transpose(X) * X;
+[U, S] = svd(Sigma);
 
 
 
