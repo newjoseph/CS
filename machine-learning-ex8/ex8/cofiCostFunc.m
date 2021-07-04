@@ -62,6 +62,8 @@ Theta_grad = zeros(size(Theta));
  %Regularization
  
  J += lambda/2 * (sum(sum(Theta.^2)) + sum(sum(X.^2)));
+ X_grad += lambda * X;
+ Theta_grad += lambda * Theta;
 
 
 
