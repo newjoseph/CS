@@ -40,8 +40,8 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 %
     
-% Can I do it by vectorization?
-  
+
+    
 %for i = 1: num_movies
 %  for j = 1: num_users
 %    if( R(i,j) == 1)
@@ -49,11 +49,14 @@ Theta_grad = zeros(size(Theta));
 %    endif  
 %  endfor
 %endfor
+% This method is not wokring.
 
 
-% newY = Y.*R;
- J = 1/2 * sum(sum((( X * transpose(Theta) - Y) .*R ) .^2 ));
+% Vectorized method is encouraged
+ J = 1/2 * sum(sum((( X * transpose(Theta) - Y) .* R ) .^2 ));
 
+ X_grad = (R .* ((X*Theta') - Y)) * Theta; 
+ Theta_grad = (R .* ((X*Theta') - Y))' * X;
 
 
 
